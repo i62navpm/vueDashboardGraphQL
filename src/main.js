@@ -1,12 +1,17 @@
 import '@/assets/style/main.scss'
+import 'vuetify/dist/vuetify.min.css'
 
 import Vue from 'vue'
+import Vuetify from 'vuetify'
+
 import { sync } from 'vuex-router-sync'
 
 import router from '@/router'
 import store from '@/store'
 
 import App from '@/components/App.vue'
+
+Vue.use(Vuetify)
 
 sync(store, router)
 

@@ -1,7 +1,9 @@
 <template>
-  <div>Home</div>
+  <v-chip>Example Chip</v-chip>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'Home',
+}
 </script>
