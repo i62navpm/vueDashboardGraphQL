@@ -60,8 +60,15 @@
     "yaml-jest": "^1.0.5"
   },
   "dependencies": {
+    "apollo-cache-inmemory": "^1.1.10",
+    "apollo-client": "^2.2.6",
+    "apollo-link": "^1.2.1",
+    "apollo-link-http": "^1.5.3",
     "cypress": "^2.1.0",
+    "graphql": "^0.13.1",
+    "graphql-tag": "^2.8.0",
     "vue": "^2.5.13",
+    "vue-apollo": "^3.0.0-beta.5",
     "vue-i18n": "^7.4.2",
     "vue-router": "^3.0.1",
     "vuetify": "^1.0.6",
