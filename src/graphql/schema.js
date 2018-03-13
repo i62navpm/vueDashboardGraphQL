@@ -26,8 +26,19 @@ const ProjectType = new GraphQLObjectType({
 const QueryType = new GraphQLObjectType({
   name: 'Query',
   fields: {
-    projects: {
+    listProjects: {
       type: new GraphQLList(ProjectType),
+      resolve: () => {
+        return projectData.map(project => {
+          project.components = componentsData.filter(
+            component => component.projectId === project.id
+          )
+          return project
+        })
+      },
+    },
+    getProject: {
+      type: ProjectType,
       resolve: (root, args) => {
         const project = projectData.find(project => project.id === args.projectId)
         project.components = componentsData.filter(
