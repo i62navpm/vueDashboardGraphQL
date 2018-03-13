@@ -1,1 +1,1 @@
-# vue-boilerplate
+# Vue Dashboard [GraphQL]
