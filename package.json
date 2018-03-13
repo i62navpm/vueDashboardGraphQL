@@ -16,7 +16,8 @@
     "serve-coverage": "live-server coverage -q",
     "pretty": "prettier --write **/*.{js,json,scss,vue}",
     "precommit": "lint-staged",
-    "commitmsg": "cd .. && validate-commit-msg -p eslint"
+    "commitmsg": "validate-commit-msg -p eslint",
+    "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "lint-staged": {
     "*.{js,vue}": ["prettier --write", "eslint --fix", "git add"],
@@ -25,6 +26,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@storybook/vue": "^3.3.15",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.1",
     "eslint": "^4.18.0",
     "eslint-config-prettier": "^2.9.0",
@@ -46,8 +49,8 @@
     "poi": "^9.6.13",
     "poi-preset-bundle-report": "^2.0.2",
     "poi-preset-eslint": "^9.1.1",
-    "poi-preset-yaml": "^1.0.1",
     "poi-preset-uglifyjs": "^1.0.1",
+    "poi-preset-yaml": "^1.0.1",
     "prettier": "^1.10.2",
     "sass-loader": "^6.0.6",
     "serve": "^6.4.10",
@@ -57,6 +60,7 @@
     "yaml-jest": "^1.0.5"
   },
   "dependencies": {
+    "cypress": "^2.1.0",
     "vue": "^2.5.13",
     "vue-i18n": "^7.4.2",
     "vue-router": "^3.0.1",
