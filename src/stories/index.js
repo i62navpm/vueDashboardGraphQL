@@ -1,8 +1,14 @@
-import { storiesOf } from '@storybook/vue'
+import { storiesOf, addDecorator } from '@storybook/vue'
 
-import Home from '../components/views/Home.vue'
+import Toolbar from '../components/Toolbar.vue'
 
-storiesOf('MyButton', module).add('story as a component', () => ({
-  components: { Home },
-  template: '<Home :rounded="true">rounded</Home>',
+addDecorator(() => {
+  return {
+    template: '<v-app id="inspire"><story/></v-app>',
+  }
+})
+
+storiesOf('Main layout', module).add('Toolbar', () => ({
+  components: { Toolbar },
+  template: '<toolbar />',
 }))
