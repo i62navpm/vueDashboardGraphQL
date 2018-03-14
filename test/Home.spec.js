@@ -1,7 +1,12 @@
-import { shallow } from 'vue-test-utils'
 import Home from '@/components/views/Home'
 
-it('should have home text', async () => {
-  const wrapper = shallow(Home)
-  expect(wrapper.text()).toBe('Home')
+describe('Home component test', () => {
+  it('Has a apollo object', () => {
+    expect(typeof Home.apollo).toBe('object')
+  })
+  it('Has a project list', () => {
+    expect(typeof Home.data).toBe('function')
+    const defaultData = Home.data()
+    expect(defaultData.listProjects).toEqual([])
+  })
 })

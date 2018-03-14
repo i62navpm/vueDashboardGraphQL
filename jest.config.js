@@ -4,6 +4,8 @@ module.exports = {
     '.*\\.js$': '<rootDir>/node_modules/babel-jest',
     '.*\\.ya?ml$': '<rootDir>/node_modules/yaml-jest',
     '.*\\.vue$': '<rootDir>/node_modules/jest-vue-preprocessor',
+    '.*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '<rootDir>/fileTransformer.js',
   },
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',

@@ -18,7 +18,7 @@
 
 <script>
 import listProjects from '@/graphql/queries/query.allProjects'
-import Project from '@/components/presentationals/project'
+import Project from '@/components/presentationals/Project'
 
 export default {
   name: 'Home',
