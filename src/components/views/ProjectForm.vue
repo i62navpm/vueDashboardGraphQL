@@ -5,11 +5,12 @@
     wrap
   >
     <v-flex
+      v-if="!loading"
       xs12 
       sm6
     >
       <project-form
-        :project="project"
+        :project="getProject"
         :submit="addProject"
       />
     </v-flex>
@@ -19,6 +20,7 @@
 <script>
 import ProjectForm from '@/components/presentationals/ProjectForm'
 import addProject from '@/graphql/mutations/mutation.addProject'
+import getProject from '@/graphql/queries/query.getProject'
 
 export default {
   name: 'Home',
@@ -27,7 +29,8 @@ export default {
   },
   data() {
     return {
-      project: {},
+      loading: 0,
+      getProject: {},
     }
   },
   methods: {
@@ -38,6 +41,20 @@ export default {
           input: data,
         },
       })
+    },
+  },
+  apollo: {
+    $loadingKey: 'loading',
+    getProject: {
+      query: getProject,
+      variables() {
+        return {
+          projectId: this.$route.params.projectId,
+        }
+      },
+      skip() {
+        return !this.$route.params.projectId
+      },
     },
   },
 }

@@ -5,5 +5,9 @@ query {
   listProjects {
     name
     slug
+    components {
+      name
+      repo
+    }
   }
 }`)

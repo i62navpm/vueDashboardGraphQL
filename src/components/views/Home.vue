@@ -20,26 +20,24 @@
         xs12 
         sm12
         md6>
-        <router-link to="/project">
-          <v-btn
-            color="pink"
-            dark
-            fixed
-            bottom
-            right
-            fab
-          >
-            <v-icon>add</v-icon>
-          </v-btn>
-        </router-link>
-          
+        <v-btn
+          to="/project"
+          color="pink"
+          dark
+          fixed
+          bottom
+          right
+          fab
+        >
+          <v-icon>add</v-icon>
+        </v-btn>
       </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-import listProjects from '@/graphql/queries/query.allProjects'
+import listProjects from '@/graphql/queries/query.listProjects'
 import Project from '@/components/presentationals/Project'
 
 export default {
