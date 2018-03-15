@@ -15,7 +15,7 @@ const ComponentType = new GraphQLObjectType({
 const ProjectType = new GraphQLObjectType({
   name: 'Project',
   fields: {
-    id: { type: GraphQLID },
+    slug: { type: GraphQLID },
     name: { type: GraphQLString },
     date: { type: GraphQLString },
     image: { type: GraphQLString },

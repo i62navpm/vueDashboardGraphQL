@@ -1,8 +1,8 @@
 import gql from 'graphql-tag'
 
 export default gql(`
-query {
-  listProjects {
+mutation($input: ProjectInput!) {
+  addProject(input: $input) {
     name
     slug
   }

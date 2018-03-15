@@ -6,6 +6,7 @@ import Vuetify from 'vuetify'
 
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
+import { HttpLink } from 'apollo-link-http'
 import VueApollo from 'vue-apollo'
 
 import { sync } from 'vuex-router-sync'
@@ -16,8 +17,12 @@ import store from '@/store'
 import App from '@/components/App.vue'
 import { MockHttpLink } from '@/graphql/mockHttpLink'
 
+const httpLink = new HttpLink({
+  uri: 'http://192.168.20.110:4004/graphql',
+})
+
 const apolloClient = new ApolloClient({
-  link: MockHttpLink,
+  link: process.env.NODE_ENV === 'development' ? MockHttpLink : httpLink,
   cache: new InMemoryCache(),
   connectToDevTools: true,
 })
