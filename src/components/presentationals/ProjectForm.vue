@@ -1,46 +1,29 @@
-<template>
-  <v-card class="elevation-2">
-    <v-toolbar 
-      dark 
-      color="indigo">
-      <v-icon large>add_to_queue</v-icon>
-      <v-toolbar-title>Create Project</v-toolbar-title>
-      <v-spacer />
-      <v-btn
-        flat
-        icon
-        @click="close"
-      >
-        <v-icon 
-          medium 
-        >
-          close
-        </v-icon>
-      </v-btn>
-    </v-toolbar>
-    <v-card-text>
-      <v-form 
-        ref="form"
-        v-model="valid"
-        lazy-validation
-      >
-        <v-text-field
-          :rules="nameRules"
-          v-model="projectForm.name"
-          label="Name"
-          required
-        />
-        <v-btn
-          :disabled="!valid"
-          color="primary"
-          type="submit"
-          @click.prevent="sendForm(projectForm)"
-        >
-          Create
-        </v-btn>
-      </v-form>
-    </v-card-text>
-  </v-card>
+<template lang="pug">
+  v-card.elevation-2
+    v-toolbar(dark color='indigo')
+      v-icon(large) add_to_queue
+      v-toolbar-title Create Project
+      v-spacer
+      v-btn(flat icon @click='close')
+        v-icon(medium) close
+    v-card-text
+      v-form(ref='form', v-model='valid', lazy-validation)
+        
+        p.headline.text-xs-center Project
+        v-divider.mb-4
+        v-text-field(:rules='nameRules', v-model='projectForm.name', label='Name', required)
+        
+        p.mt-5.headline.text-xs-center Repositories
+        v-divider.mb-4
+        div(v-for="(repository, index) in projectForm.components")
+          v-text-field(v-model='repository.url', :label='`URL repo ${index + 1}`' append-icon="close" :append-icon-cb="removeRepo")
+        v-spacer
+        .text-xs-right
+          v-btn(flat small color="primary" @click="addRepo()") 
+            v-icon add
+            | Add repo
+        v-btn(:disabled='!valid', color='primary', type='submit', @click.prevent='sendForm(projectForm)') 
+          | Create
 </template>
 
 <script>
@@ -58,7 +41,7 @@ export default {
   },
   data: () => ({
     valid: false,
-    projectForm: {},
+    projectForm: { components: [{}] },
     nameRules: [v => !!v || 'Name is required'],
   }),
   created() {
@@ -79,6 +62,12 @@ export default {
         .toLowerCase()
         .replace(/[^\w ]+/g, '')
         .replace(/ +/g, '-')
+    },
+    addRepo() {
+      this.projectForm.components.push({})
+    },
+    removeRepo(index) {
+      this.projectForm.components.splice(index, 1)
     },
     close() {
       this.$router.push({ name: 'home' })
