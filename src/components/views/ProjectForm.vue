@@ -7,7 +7,9 @@
     <v-flex
       v-if="!loading"
       xs12 
-      sm6
+      sm10
+      md8
+      
     >
       <project-form
         :project="getProject"
