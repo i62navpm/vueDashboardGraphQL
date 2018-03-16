@@ -5,6 +5,7 @@ query {
   listProjects {
     name
     slug
+    image
     components {
       name
       repo
