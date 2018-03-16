@@ -1,8 +1,19 @@
 {
-  "presets": [["vue"]],
+  "presets": [
+    [
+      "vue"
+    ]
+  ],
   "plugins": [
-    ["transform-decorators-legacy"],
-    ["transform-class-properties"],
+    [
+      "transform-decorators-legacy"
+    ],
+    [
+      "transform-class-properties"
+    ],
+    [
+      "syntax-dynamic-import"
+    ],
     [
       "transform-object-rest-spread",
       {
@@ -12,7 +23,16 @@
   ],
   "env": {
     "test": {
-      "presets": [["env", { "targets": { "node": "current" } }]]
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ]
     }
   }
 }
