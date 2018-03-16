@@ -4,6 +4,7 @@
       color="indigo"
       dark
       fixed
+      inset
       app
     />
   </div>
