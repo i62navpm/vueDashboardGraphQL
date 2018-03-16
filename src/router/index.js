@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/components/views/Home'
-import ProjectForm from '@/components/views/ProjectForm'
 
 Vue.use(VueRouter)
 
@@ -10,12 +8,13 @@ const router = new VueRouter({
   routes: [
     {
       path: '/',
-      component: Home,
+      component: () => import(/* webpackChunkName: "home-view" */ '@/components/views/Home'),
       name: 'home',
     },
     {
       path: '/project/:projectId?',
-      component: ProjectForm,
+      component: () =>
+        import(/* webpackChunkName: "projectForm-view" */ '@/components/views/ProjectForm'),
       name: 'projectForm',
     },
   ],
