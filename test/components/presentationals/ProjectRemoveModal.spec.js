@@ -1,7 +1,7 @@
 import Vuetify from 'vuetify'
 import { shallow, createLocalVue } from '@vue/test-utils'
 import ProjectRemoveModal from '@/components/presentationals/ProjectRemoveModal'
-import projectsMock from '@/graphql/ProjectMock'
+import projectsMock from '@/graphql/projectMock'
 import componentsMock from '@/graphql/componentsMock'
 
 const localVue = createLocalVue()

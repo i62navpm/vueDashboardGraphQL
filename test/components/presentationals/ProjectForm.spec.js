@@ -1,8 +1,7 @@
 import Vuetify from 'vuetify'
 import { shallow, createLocalVue } from '@vue/test-utils'
 import ProjectForm from '@/components/presentationals/ProjectForm'
-import projectsMock from '@/graphql/ProjectMock'
-import componentsMock from '@/graphql/componentsMock'
+import projectsMock from '@/graphql/projectMock'
 
 const localVue = createLocalVue()
 localVue.use(Vuetify)
@@ -14,7 +13,7 @@ describe('Project Form', () => {
   })
 
   it('Has a data props', () => {
-    const project = { ...projectsMock[0], components: componentsMock[0] }
+    const project = { ...projectsMock[0] }
     const wrapper = shallow(ProjectForm, { localVue, propsData: { project, submit: Function } })
     const { slug, name } = wrapper.props().project
 
