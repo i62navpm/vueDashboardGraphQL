@@ -15,8 +15,8 @@
         
         p.mt-5.headline.text-xs-center Repositories
         v-divider.mb-4
-        div(v-for="(repository, index) in projectForm.components")
-          v-text-field(v-model='repository.url', :label='`URL repo ${index + 1}`' append-icon="close" :append-icon-cb="removeRepo")
+        div(v-for="(repository, index) in projectForm.components" :key="repository.repo")
+          v-text-field(v-model='repository.repo', :label='`URL repo ${index + 1}`' append-icon="close" :append-icon-cb="() => removeRepo(index)")
         v-spacer
         .text-xs-right
           v-btn(flat small color="primary" @click="addRepo()") 
@@ -45,7 +45,11 @@ export default {
     nameRules: [v => !!v || 'Name is required'],
   }),
   created() {
-    this.projectForm = { ...this.project, ...this.projectForm }
+    this.projectForm = {
+      ...this.projectForm,
+      ...this.project,
+      components: [...this.project.components],
+    }
     this.valid = !!this.projectForm.name
   },
   methods: {

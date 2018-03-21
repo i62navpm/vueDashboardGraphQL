@@ -17,7 +17,7 @@ v-card
     v-card-text.text-xs-center(v-show='show')
       repository-chip(v-for='component in data.components', :key='component.id' color="orange" :repository="component")
       v-divider.my-3
-      v-btn(color="success")
+      v-btn(color="success" @click.native="onDeploy(data)")
         v-icon.mr-2 play_arrow
         | Deploy
 </template>
@@ -41,6 +41,10 @@ export default {
       required: true,
     },
     onRemove: {
+      type: Function,
+      default: () => {},
+    },
+    onDeploy: {
       type: Function,
       default: () => {},
     },
