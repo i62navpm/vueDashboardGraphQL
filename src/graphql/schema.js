@@ -45,7 +45,7 @@ const QueryType = new GraphQLObjectType({
       resolve: (root, args) => {
         const project = projectData.find(project => project.slug === args.projectId)
         project.components = componentsData.filter(
-          component => component.projectId === args.projectId
+          component => component.projectSlug === args.projectId
         )
         return project
       },
