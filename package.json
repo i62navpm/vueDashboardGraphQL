@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "poi -o",
     "build": "poi build",
+    "publish-s3": "PUBLISH_S3=true yarn build",
     "build-report": "poi build --bundle-report",
     "lint": "eslint --ext .js,.vue src test",
     "test": "jest",
@@ -60,6 +61,7 @@
     "validate-commit": "^3.4.0",
     "vue-template-compiler": "^2.5.13",
     "vue-test-utils": "^1.0.0-beta.11",
+    "webpack-s3-plugin": "^1.0.0-rc.0",
     "yaml-jest": "^1.0.5"
   },
   "dependencies": {
