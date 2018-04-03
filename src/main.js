@@ -18,7 +18,7 @@ import App from '@/components/App.vue'
 import { MockHttpLink } from '@/graphql/mockHttpLink'
 
 const httpLink = new HttpLink({
-  uri: 'http://192.168.20.110:4004/graphql',
+  uri: 'http://192.168.20.110:3035/graphql',
 })
 
 const apolloClient = new ApolloClient({
