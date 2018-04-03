@@ -9,11 +9,10 @@
       xs12 
       sm10
       md8
-      
     >
       <project-form
-        :project="getProject"
-        :submit="addProject"
+        :project="projectOne"
+        :submit="$route.params.projectId ? projectUpdateById : projectCreate"
       />
     </v-flex>
   </v-layout>
@@ -21,8 +20,9 @@
 
 <script>
 import ProjectForm from '@/components/presentationals/ProjectForm'
-import addProject from '@/graphql/mutations/mutation.addProject'
-import getProject from '@/graphql/queries/query.getProject'
+import projectCreate from '@/graphql/mutations/mutation.projectCreate'
+import projectUpdateById from '@/graphql/mutations/mutation.projectUpdateById'
+import projectOne from '@/graphql/queries/query.projectOne'
 
 export default {
   name: 'Home',
@@ -32,26 +32,31 @@ export default {
   data() {
     return {
       loading: 0,
-      getProject: {},
+      projectOne: { components: [] },
     }
   },
   methods: {
-    addProject(data) {
+    projectCreate(record) {
       return this.$apollo.mutate({
-        mutation: addProject,
-        variables: {
-          input: data,
-        },
+        mutation: projectCreate,
+        variables: { record },
+      })
+    },
+    projectUpdateById(record) {
+      delete record.__typename
+      return this.$apollo.mutate({
+        mutation: projectUpdateById,
+        variables: { record },
       })
     },
   },
   apollo: {
     $loadingKey: 'loading',
-    getProject: {
-      query: getProject,
+    projectOne: {
+      query: projectOne,
       variables() {
         return {
-          projectId: this.$route.params.projectId,
+          filter: { _id: this.$route.params.projectId },
         }
       },
       skip() {
