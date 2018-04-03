@@ -23,7 +23,7 @@
             v-icon add
             | Add repo
         v-btn(:disabled='!valid', color='primary', type='submit', @click.prevent='sendForm(projectForm)') 
-          | Create
+          | Submit
 </template>
 
 <script>
