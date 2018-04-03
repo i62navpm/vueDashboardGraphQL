@@ -7,7 +7,7 @@
       v-card-actions
         v-spacer
         v-btn(color='green darken-1', flat='flat', @click.native='dialog = false') Close
-        v-btn(color='error darken-1', flat='flat', @click.native='removeProject(project.slug)') Remove
+        v-btn(color='error darken-1', flat='flat', @click.native='removeProject(project._id)') Remove
 </template>
 
 <script>
@@ -23,8 +23,8 @@ export default {
     dialog: false,
   }),
   methods: {
-    removeProject(slug) {
-      this.$emit('onRemove', slug)
+    removeProject(id) {
+      this.$emit('onremove', id)
     },
   },
 }
