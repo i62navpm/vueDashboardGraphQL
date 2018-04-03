@@ -1,14 +1,14 @@
 <template lang="pug">
 v-card
-  v-card-media(:src='data.image', height='200px')
+  v-card-media(:src='data.image || imageDefault', height='200px')
     v-btn.delete-btn(icon @click.native="onRemove(data)")
       v-icon(color="red") delete
   v-card-title(primary-title='')
     div
       .headline {{ data.name }}
-      span.grey--text {{ data.date | normalizeDate }}
+      span.grey--text(v-if="data.date") {{ data.date | normalizeDate }}
   v-card-actions
-    v-btn(:to="{name: 'projectForm', params: {projectId: data.slug}}", color='info')
+    v-btn(:to="{name: 'projectForm', params: {projectId: data._id}}", color='info')
       | Edit
     v-spacer
     v-btn(v-if='data.components && data.components.length', icon='', @click.native='show = !show')
@@ -23,6 +23,7 @@ v-card
 </template>
 
 <script>
+import projectDefault from '@/assets/images/projectDefault.png'
 import RepositoryChip from './RepositoryChip'
 
 export default {
@@ -51,6 +52,7 @@ export default {
   },
   data: () => ({
     show: false,
+    imageDefault: projectDefault,
   }),
 }
 </script>
